@@ -1,4 +1,5 @@
-import { FC, MouseEvent, RefObject, useEffect } from 'react'
+import { RefObject, useEffect } from 'react'
+import styles from '../components/ButtonRipple/ButtonRipple2.module.scss'
 
 // interface Props {
 //   element: HTMLElement
@@ -17,10 +18,12 @@ export const useRippleAnimation = (
     if (elementCurrent === null) return
 
     const applyContainerProperties = () => {
-      elementCurrent.classList.add('ripple-container')
+      // elementCurrent.classList.add('ripple-container')
+      elementCurrent.classList.add(styles['rippleContainer'])
     }
 
-    const applyStyles = (e: any) => {
+    const applyStyles = (e: MouseEvent) => {
+      console.log('e', e)
       const { offsetX, offsetY } = e
       const { style } = elementCurrent
       const sizeOffset = 50
@@ -33,11 +36,14 @@ export const useRippleAnimation = (
       style.setProperty('--effect-color', `${color}`)
     }
 
-    // const handleClick = (event: MouseEvent) => {
-    const handleClick = (event: any) => {
-      elementCurrent.classList.remove('active')
+    const handleClick = (event: MouseEvent) => {
+      console.log('event', event)
+
+      // elementCurrent.classList.remove('active')
+      elementCurrent.classList.remove(styles['active'])
       applyStyles(event)
-      elementCurrent.classList.add('active')
+      // elementCurrent.classList.add('active')
+      elementCurrent.classList.add(styles['active'])
     }
 
     applyContainerProperties()

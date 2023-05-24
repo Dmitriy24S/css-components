@@ -1,0 +1,200 @@
+.hoverEffect {
+  position: relative;
+  transition: all 200ms ease-in-out;
+  margin: 0.5rem 0;
+  display: flex; // makes :before & :after overlap?
+  color: unset;
+  text-decoration: none;
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    width: 0px;
+    height: 5px;
+    margin: 5px 0 0;
+    transition: all 200ms ease-in-out;
+    // transition-duration: 750ms;
+    transition-duration: 400ms;
+    opacity: 0;
+    background-color: darken(orange, 5%);
+    // outline: none;
+  }
+
+  // &:focus-visible
+  &:hover {
+    cursor: pointer;
+    outline-offset: 6px;
+    &:before,
+    &:after {
+      width: 100%;
+      opacity: 1;
+      // outline: none;
+    }
+  }
+}
+
+.leftToRightEffect {
+  &:before,
+  &:after {
+    left: 0;
+  }
+}
+
+.rightToLeftEffect {
+  &:before,
+  &:after {
+    right: 0;
+  }
+}
+
+.outwardsEffect {
+  &:before {
+    left: 50%;
+  }
+  &:after {
+    right: 50%;
+  }
+
+  &:hover {
+    &:before,
+    &:after {
+      width: 50%;
+    }
+  }
+}
+
+.outwardsEffect2 {
+  &:before,
+  &:after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.inwardsEffect {
+  &:before {
+    left: 0;
+  }
+  &:after {
+    right: 0;
+  }
+
+  &:hover {
+    &:before,
+    &:after {
+      width: 50%;
+    }
+  }
+}
+
+.bounceOutEffect {
+  $distance: 8px;
+  $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  &:before,
+  &:after {
+    left: 0;
+    right: 0;
+    width: unset;
+    bottom: 2px;
+    height: 2px;
+    transition-duration: unset;
+    transition: unset;
+  }
+  &:before {
+    opacity: 0;
+    transform: translateY(-$distance);
+    transition: transform 0s $easeOutBack, opacity 0s;
+  }
+  &:after {
+    opacity: 0;
+    transform: translateY(calc($distance/2));
+    transition: transform 200ms $easeOutBack, opacity 200ms;
+  }
+  &:hover {
+    &:before,
+    &:after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    &:before {
+      transition: transform 200ms $easeOutBack, opacity 200ms;
+    }
+    &:after {
+      transition: transform 0s 200ms $easeOutBack, opacity 0s 200ms;
+    }
+  }
+}
+
+.gradientEffect {
+  $colors: (
+    'green': #01ff89,
+    'purple': #7a5fff,
+    'black': #141414,
+  );
+
+  // text-shadow: 0 0 map_get($colors, 'black'), 0.08em 0 0 #fff, 0 0, -0.08em 0 0 #fff;
+  // black and white outline?
+  // text-shadow: 0 0 #ffffff, 0.08em 0 0 #fff0, 0 0, -0.08em 0 0 #fff0;
+  // color: transparent;
+
+  vertical-align: bottom;
+  overflow: hidden;
+
+  &:before {
+    width: 0;
+  }
+  &:hover:before {
+    width: 0;
+  }
+
+  &:after {
+    background: linear-gradient(
+        to bottom,
+        rgba(map_get($colors, 'black'), 0.8),
+        rgba(map_get($colors, 'black'), 0.8)
+      )
+      center 1.08em / 100% no-repeat;
+
+    background-image: linear-gradient(
+      90deg,
+      rgba(map_get($colors, 'purple'), 0.8) 15%,
+      rgba(map_get($colors, 'green'), 0.6) 35%,
+      rgba(map_get($colors, 'purple'), 0.8) 85%
+    );
+
+    height: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 400%;
+    will-change: transform;
+    z-index: -1;
+  }
+
+  &:hover:after {
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 400%;
+
+    animation: underline-gradient 6s linear infinite;
+    // background-image: linear-gradient(
+    //   90deg,
+    //   rgba(map_get($colors, 'purple'), 0.8) 15%,
+    //   rgba(map_get($colors, 'green'), 0.6) 35%,
+    //   rgba(map_get($colors, 'purple'), 0.8) 85%
+    // );
+  }
+
+  @keyframes underline-gradient {
+    0% {
+      transform: translate3d(0%, 0%, 0);
+    }
+    100% {
+      transform: translate3d(-75%, 0%, 0);
+    }
+  }
+}

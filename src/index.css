@@ -1,3 +1,5 @@
+/* VITE DEFAULT */
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -7,11 +9,11 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
-  font-synthesis: none;
+  /* font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%; */
 }
 
 a {
@@ -19,9 +21,9 @@ a {
   /* color: #646cff; */
   text-decoration: inherit;
 }
-a:hover {
-  /* color: #535bf2; */
-}
+/* a:hover {
+  color: #535bf2;
+} */
 
 body {
   margin: 0;
@@ -31,10 +33,10 @@ body {
   min-height: 100vh;
 }
 
-h1 {
+/* h1 {
   font-size: 3.2em;
   line-height: 1.1;
-}
+} */
 
 button {
   border-radius: 8px;
@@ -47,15 +49,15 @@ button {
   cursor: pointer;
   /* transition: border-color 0.25s; */
 }
-button:hover {
-  /* border-color: #646cff; */
+/* button:hover {
+  border-color: #646cff;
 }
 button:focus,
 button:focus-visible {
-  /* outline: 4px auto -webkit-focus-ring-color; */
-}
+   outline: 4px auto -webkit-focus-ring-color;
+} */
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
@@ -66,7 +68,7 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */
 
 /* App.css */
 
@@ -77,7 +79,7 @@ button:focus-visible {
   text-align: center;
 }
 
-.logo {
+/* .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
@@ -111,47 +113,24 @@ button:focus-visible {
 
 .read-the-docs {
   color: #888;
+} */
+
+/* NEW */
+
+* {
+  box-sizing: border-box;
 }
 
-.ripple-container {
-  position: relative;
-  overflow: hidden;
-
-  --effect-name: ripple;
-  --effect-duration: 1000ms;
-  --effect-top: 0px;
-  --effect-left: 0px;
-  --effect-height: 100px;
-  --effect-width: 100px;
-  --effect-color: white;
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid gray;
+  margin-bottom: 1rem;
+  width: 100%;
 }
-
-.ripple-container::before {
-  content: '';
-  position: absolute;
-  opacity: 0.3;
-
-  top: var(--effect-top);
-  left: var(--effect-left);
-  height: var(--effect-height);
-  width: var(--effect-width);
-  border-radius: 50%;
-  transform: scale(0);
-  background: var(--effect-color);
-  z-index: 100;
-}
-
-.ripple-container.active::before {
-  border-radius: 50%;
-  animation: ripple var(--effect-duration) linear forwards;
-}
-
-@keyframes ripple {
-  from {
-    transform: scale(0);
-  }
-  to {
-    transform: scale(6);
-    opacity: 0;
-  }
+.container:last-of-type {
+  border-bottom: none;
 }

@@ -1,13 +1,18 @@
 import ButtonRipple from './components/ButtonRipple/ButtonRipple'
-import ButtonRipple2 from './components/ButtonRipple/ButtonRipple2'
+import TextBlockyReveal from './components/TextBlockyReveal/TextBlockyReveal'
+import TextGradient from './components/TextGradient/TextGradient'
+import TextHover from './components/TextHover/TextHover'
+import TextMenuSlidingUnderline from './components/TextMenuSlidingUnderline/TextMenuSlidingUnderline'
 
 function App() {
   return (
     <>
-      <h1>CSS Components</h1>
+      <TextGradient />
       <div className='container'>
         <ButtonRipple />
-        <ButtonRipple2 />
+        <TextBlockyReveal />
+        <TextHover />
+        <TextMenuSlidingUnderline />
       </div>
     </>
   )

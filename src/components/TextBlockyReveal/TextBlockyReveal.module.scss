@@ -1,0 +1,92 @@
+// :root {
+//   --red: #ea4335;
+//   --green: #34a853;
+//   --yellow: #fbbc05;
+//   --speed: 0.65s;
+// }
+
+.textBlockyReveal {
+  // $red: #ea4335;
+  // $green: #34a853;
+  // $yellow: #fbbc05;
+  --red: #ea4335;
+  --green: #34a853;
+  --yellow: #fbbc05;
+  --speed: 0.65s;
+
+  font-size: clamp(2rem, 1rem + 1vmin, 10rem);
+  margin: 0;
+  cursor: pointer;
+
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  line-height: 0.8;
+
+  span {
+    // --color: $red
+    --color: var(--red);
+    color: var(--color);
+    position: relative;
+    clip-path: inset(-20% 0);
+    animation-name: text-reveal, shimmy;
+    animation-duration: var(--speed);
+    animation-delay: calc((0.5 + var(--index)) * (var(--speed) / 3));
+    animation-fill-mode: both;
+    animation-timing-function: steps(1), ease-out;
+  }
+
+  @keyframes shimmy {
+    0% {
+      transform: transalteX(-1ch);
+    }
+  }
+
+  @keyframes text-reveal {
+    0% {
+      color: transparent;
+    }
+    50%,
+    100% {
+      color: var(--color);
+    }
+  }
+
+  span:after {
+    content: '';
+    position: absolute;
+    inset: -20% 0;
+    background-color: var(--color);
+    animation-name: block-reveal;
+    animation-duration: var(--speed);
+    animation-delay: calc((0.5 + var(--index)) * (var(--speed) / 3));
+    animation-fill-mode: both;
+  }
+
+  @keyframes block-reveal {
+    0% {
+      transform: translteX(-110%);
+    }
+    45%,
+    55% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(110%);
+    }
+  }
+
+  span:nth-of-type(1) {
+    --color: var(--green);
+    // index: 0;
+    --index: 0;
+  }
+  span:nth-of-type(2) {
+    --color: var(--yellow);
+    --index: 1;
+  }
+  span:nth-of-type(3) {
+    --color: var(--red);
+    --index: 2;
+  }
+}
